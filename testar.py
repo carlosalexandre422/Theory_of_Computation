@@ -36,29 +36,6 @@ class AFDGraphDrawer:
         graph.view()
 
 
-def desenhar_diagrama_afd(afd, diretorio):
-    # Criação do grafo
-    graph = Digraph(format='png')
-
-    # Adiciona estados
-    for estado in afd['estados']:
-        if estado in afd['finais']:
-            graph.node(estado, shape='doublecircle')
-        else:
-            graph.node(estado, shape='circle')
-
-    # Adiciona transições
-    for transicao in afd['transicoes']:
-        origem, destino, simbolo = transicao
-        graph.edge(origem, destino, label=simbolo)
-
-    # Salva o grafo em um arquivo
-    caminho_arquivo = os.path.join(diretorio, 'afd_diagram.png')
-    graph.render(filename=caminho_arquivo, cleanup=True, format='png')
-
-    # Exibe o grafo
-    graph.view()
-
 def verificar_entrada_afd(arquivo):
     # Verifica se o arquivo existe
     if not os.path.exists(arquivo):
